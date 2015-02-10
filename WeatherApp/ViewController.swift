@@ -37,7 +37,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func getJson() {
@@ -50,12 +49,7 @@ class ViewController: UIViewController {
                 var jsonObj = JSON(json!)
                 println(jsonObj)
                 var location = jsonObj["name"].stringValue.capitalizedString
-                var temp = jsonObj["main"]["temp"].intValue
-                var celTemp = temp - 273
-                var weather = jsonObj["weather"][0]["main"].stringValue
                 var weatherSum = jsonObj["weather"][0]["description"].stringValue
-                var windSum = jsonObj["wind"]["speed"].intValue
-                var humidity = jsonObj["main"]["humidity"].intValue
                 self.currentTemp = jsonObj["main"]["temp"].intValue - 273
                 self.windSpeed = jsonObj["wind"]["speed"].intValue
                 self.humidityPercent = jsonObj["main"]["humidity"].intValue
@@ -65,16 +59,8 @@ class ViewController: UIViewController {
     }
     
     func setData(location: String, weatherSum: String) {
-        self.setText(location, weatherSum: weatherSum)
+        setDataToText(location, weatherSum: weatherSum)
         determineTempScore()
-        
-//        if (weather == "Clouds" && celTemp < 10 && celTemp > 4) {
-//            self.weatherText.text = "At least triple layer it today."
-//        } else if (weather == "Clouds" && celTemp < 4 && celTemp > 0) {
-//            self.weatherText.text = "I'd wear some gloves if I were you..."
-//        } else if (weather == "Clouds" && celTemp <= 0) {
-//            self.weatherText.text = "Throw yourself in a fire, it's below freezing!"
-//        }
         
         if (location == "London") {
             self.icons.image = UIImage(named: "london-01.png")
@@ -84,7 +70,7 @@ class ViewController: UIViewController {
         
     }
     
-    func setText(location: String, weatherSum: String) {
+    func setDataToText(location: String, weatherSum: String) {
         self.cityText.text = location.uppercaseString
         self.weatherSummary.text = "(" + weatherSum.capitalizedString + ")"
         self.celTemp.text = String(self.currentTemp)
@@ -106,6 +92,22 @@ class ViewController: UIViewController {
             self.tempScore += 2
         } else {
             self.tempScore -= 2
+        }
+        
+        setRecommendationText()
+        
+    }
+    
+    func setRecommendationText() {
+        
+        if (tempScore < 3) {
+            self.weatherText.text = "Wear all the layers! Gloves, hat and scarf included"
+        } else if (tempScore >= 3 && tempScore < 7) {
+            self.weatherText.text = "Triple layer yourself! A hat would be nice too"
+        } else if (tempScore >= 7 && tempScore < 18) {
+            self.weatherText.text = "Double layer today. Wear a nice jumper"
+        } else if (tempScore >= 18) {
+            self.weatherText.text = "T-shirt time!"
         }
         
     }
