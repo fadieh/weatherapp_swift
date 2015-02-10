@@ -53,18 +53,24 @@ class ViewController: UIViewController {
     func setData(location: String, celTemp: Int, weather: String, weatherSum: String) {
         self.cityText.text = location.uppercaseString
         self.celTemp.text = String(celTemp) + "°C"
-        self.weatherSummary.text = weatherSum.capitalizedString
+        self.weatherSummary.text = "(" + weatherSum.capitalizedString + ")"
         println(NSDate())
         if (weather == "Clouds" && celTemp < 10 && celTemp > 4) {
-            self.weatherText.text = "It's fookin' shite."
+            self.weatherText.text = "At least triple layer it today."
         } else if (weather == "Clouds" && celTemp < 4 && celTemp > 0) {
-            self.weatherText.text = "It's nearly fookin' freezing."
+            self.weatherText.text = "I'd wear some gloves if I were you..."
         } else if (weather == "Clouds" && celTemp <= 0) {
-            self.weatherText.text = "It's bloody below fookin' zero"
+            self.weatherText.text = "Your face will freeze off."
         }
         
+        if (location == "London") {
+            self.icons.image = UIImage(named: "london-01.png")
+        } else {
+            self.icons.image = nil
+        }
         
     }
+    
     
     
     
