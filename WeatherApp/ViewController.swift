@@ -61,13 +61,7 @@ class ViewController: UIViewController {
     func setData(location: String, weatherSum: String) {
         setDataToText(location, weatherSum: weatherSum)
         determineTempScore()
-        
-        if (location == "London") {
-            self.icons.image = UIImage(named: "london-01.png")
-        } else {
-            self.icons.image = nil
-        }
-        
+        setLocationImage(location)
     }
     
     func setDataToText(location: String, weatherSum: String) {
@@ -112,7 +106,14 @@ class ViewController: UIViewController {
         
     }
     
-    
+    func setLocationImage(location: String) {
+        
+        if (location == "London") {
+            self.icons.image = UIImage(named: "london-01.png")
+        } else {
+            self.icons.image = nil
+        }
+    }
     
     
 }
