@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var icons: UIImageView!
     @IBOutlet weak var weatherSummary: UILabel!
     
-    var tempScore = 0
+    var clothesScore = 0
     var currentTemp = 0
     var windSpeed = 0
     var windSpeedEffectOnTemperature = 0
@@ -80,18 +80,18 @@ class ViewController: UIViewController {
     
     func determineTempScore() {
         
-        self.tempScore = self.currentTemp
+        self.clothesScore = self.currentTemp
         
         if (self.humidityPercent >= 50) {
-            self.tempScore += 2
+            self.clothesScore += 2
         } else {
-            self.tempScore -= 2
+            self.clothesScore -= 2
         }
         
         if (self.windSpeed < 6) {
-            self.tempScore += 2
+            self.clothesScore += 2
         } else {
-            self.tempScore -= 2
+            self.clothesScore -= 2
         }
         
         setRecommendationText()
@@ -100,13 +100,13 @@ class ViewController: UIViewController {
     
     func setRecommendationText() {
         
-        if (tempScore < 3) {
-            self.weatherText.text = "Wear all the layers! Gloves, hat and scarf included"
-        } else if (tempScore >= 3 && tempScore < 7) {
+        if (clothesScore < 3) {
+            self.weatherText.text = "All the layers! Gloves, hat and scarf included"
+        } else if (clothesScore >= 3 && clothesScore < 13) {
             self.weatherText.text = "Triple layer yourself! A hat would be nice too"
-        } else if (tempScore >= 7 && tempScore < 18) {
+        } else if (clothesScore >= 13 && clothesScore < 20) {
             self.weatherText.text = "Double layer today. Wear a nice jumper"
-        } else if (tempScore >= 18) {
+        } else if (clothesScore >= 20) {
             self.weatherText.text = "T-shirt time!"
         }
         
