@@ -87,6 +87,15 @@
                                     <rect key="frame" x="128" y="357" width="128" height="128"/>
                                 </variation>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night time prediction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCU-Fy-C4R">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="526" width="384" height="21"/>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fam-oC-QKc">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Heavy" family="Avenir Next Condensed" pointSize="12"/>
@@ -107,6 +116,7 @@
                                 <exclude reference="80I-wW-GPb"/>
                                 <exclude reference="055-Vz-lfM"/>
                                 <exclude reference="hgV-DN-wgy"/>
+                                <exclude reference="bCU-Fy-C4R"/>
                                 <exclude reference="fam-oC-QKc"/>
                             </mask>
                         </variation>
@@ -119,6 +129,7 @@
                                 <include reference="80I-wW-GPb"/>
                                 <include reference="055-Vz-lfM"/>
                                 <include reference="hgV-DN-wgy"/>
+                                <include reference="bCU-Fy-C4R"/>
                                 <include reference="fam-oC-QKc"/>
                             </mask>
                         </variation>
