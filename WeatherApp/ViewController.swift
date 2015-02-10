@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityText: UILabel!
     @IBOutlet weak var celTemp: UILabel!
     @IBOutlet weak var weatherText: UILabel!
+    @IBOutlet weak var windText: UILabel!
+    @IBOutlet weak var humidText: UILabel!
     @IBOutlet weak var icons: UIImageView!
     @IBOutlet weak var weatherSummary: UILabel!
 
@@ -44,23 +46,29 @@ class ViewController: UIViewController {
                 var celTemp = temp - 273
                 var weather = jsonObj["weather"][0]["main"].stringValue
                 var weatherSum = jsonObj["weather"][0]["description"].stringValue
-                self.setData(location, celTemp: celTemp, weather: weather, weatherSum: weatherSum)
+                var windSum = jsonObj["wind"]["speed"].intValue
+                var humidity = jsonObj["main"]["humidity"].intValue
+                println(windSum)
+                self.setData(location, celTemp: celTemp, weather: weather, weatherSum: weatherSum, windSum: windSum, humidity: humidity)
             }
         }
         
+        
     }
     
-    func setData(location: String, celTemp: Int, weather: String, weatherSum: String) {
+    func setData(location: String, celTemp: Int, weather: String, weatherSum: String, windSum: Int, humidity: Int) {
         self.cityText.text = location.uppercaseString
         self.celTemp.text = String(celTemp) + "°C"
         self.weatherSummary.text = "(" + weatherSum.capitalizedString + ")"
+        self.windText.text = "Wind speed: " + String(windSum) + " mph"
+        self.humidText.text = String(humidity) + "% humidity"
         println(NSDate())
         if (weather == "Clouds" && celTemp < 10 && celTemp > 4) {
             self.weatherText.text = "At least triple layer it today."
         } else if (weather == "Clouds" && celTemp < 4 && celTemp > 0) {
             self.weatherText.text = "I'd wear some gloves if I were you..."
         } else if (weather == "Clouds" && celTemp <= 0) {
-            self.weatherText.text = "Your face will freeze off."
+            self.weatherText.text = "Throw yourself in a fire, it's below freezing!"
         }
         
         if (location == "London") {
