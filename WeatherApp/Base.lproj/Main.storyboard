@@ -69,19 +69,13 @@
                                     <rect key="frame" x="0.0" y="84" width="198" height="21"/>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="80I-wW-GPb">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="357" width="128" height="128"/>
-                                </variation>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="055-Vz-lfM">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="256" y="357" width="128" height="128"/>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hgV-DN-wgy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hat" translatesAutoresizingMaskIntoConstraints="NO" id="hgV-DN-wgy">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="128" y="357" width="128" height="128"/>
@@ -105,6 +99,12 @@
                                     <rect key="frame" x="0.0" y="274" width="384" height="51"/>
                                 </variation>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="80I-wW-GPb">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="357" width="128" height="128"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -113,11 +113,11 @@
                                 <exclude reference="hXh-Z8-wHB"/>
                                 <exclude reference="gfR-Q0-1xP"/>
                                 <exclude reference="z4v-b6-6Ix"/>
-                                <exclude reference="80I-wW-GPb"/>
                                 <exclude reference="055-Vz-lfM"/>
                                 <exclude reference="hgV-DN-wgy"/>
                                 <exclude reference="bCU-Fy-C4R"/>
                                 <exclude reference="fam-oC-QKc"/>
+                                <exclude reference="80I-wW-GPb"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -126,11 +126,11 @@
                                 <include reference="hXh-Z8-wHB"/>
                                 <include reference="gfR-Q0-1xP"/>
                                 <include reference="z4v-b6-6Ix"/>
-                                <include reference="80I-wW-GPb"/>
                                 <include reference="055-Vz-lfM"/>
                                 <include reference="hgV-DN-wgy"/>
                                 <include reference="bCU-Fy-C4R"/>
                                 <include reference="fam-oC-QKc"/>
+                                <include reference="80I-wW-GPb"/>
                             </mask>
                         </variation>
                     </view>
@@ -138,8 +138,10 @@
                     <connections>
                         <outlet property="celTemp" destination="edE-Aa-yXW" id="WLT-6e-Am5"/>
                         <outlet property="cityText" destination="lC3-oi-mlo" id="Bw7-s5-QII"/>
+                        <outlet property="clothesIcon" destination="hgV-DN-wgy" id="lY1-9V-3hK"/>
                         <outlet property="humidText" destination="z4v-b6-6Ix" id="oKM-3W-0OB"/>
                         <outlet property="icons" destination="hXh-Z8-wHB" id="WYG-lb-2Pq"/>
+                        <outlet property="weatherIcon" destination="80I-wW-GPb" id="gal-i8-cli"/>
                         <outlet property="weatherSummary" destination="gfR-Q0-1xP" id="fdS-8F-Zvm"/>
                         <outlet property="weatherText" destination="fam-oC-QKc" id="kaG-Ly-vt0"/>
                         <outlet property="windText" destination="Rje-jG-uJK" id="orU-TG-yjt"/>
@@ -151,6 +153,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cloud" width="256" height="256"/>
+        <image name="hat" width="128" height="128"/>
         <image name="london-01" width="1071" height="3662"/>
     </resources>
 </document>

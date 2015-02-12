@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var icons: UIImageView!
     @IBOutlet weak var weatherSummary: UILabel!
     
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var clothesIcon: UIImageView!
+    
     var clothesScore = 0
     var currentTemp = 0
     var windSpeed = 0
@@ -27,7 +30,8 @@ class ViewController: UIViewController {
     var humidityPercent = 0
     var humidityEffectOnTemperature = 0
     
-
+    var weatherSum = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getJson()
@@ -48,28 +52,42 @@ class ViewController: UIViewController {
             if (json != nil) {
                 var jsonObj = JSON(json!)
                 println(jsonObj)
-                var location = jsonObj["name"].stringValue.capitalizedString
-                var weatherSum = jsonObj["weather"][0]["description"].stringValue
+                var location = jsonObj["name"].stringValue
+                self.weatherSum = jsonObj["weather"][0]["description"].stringValue
                 self.currentTemp = jsonObj["main"]["temp"].intValue - 273
                 self.windSpeed = jsonObj["wind"]["speed"].intValue
                 self.humidityPercent = jsonObj["main"]["humidity"].intValue
-                self.setData(location, weatherSum: weatherSum)
+                self.setData(location, weatherSum: self.weatherSum)
             }
         }
+        
     }
     
     func setData(location: String, weatherSum: String) {
+        
         setDataToText(location, weatherSum: weatherSum)
         determineTempScore()
         setLocationImage(location)
+        setWeatherIcon()
+        
     }
     
     func setDataToText(location: String, weatherSum: String) {
+        
         self.cityText.text = location.uppercaseString
         self.weatherSummary.text = "(" + weatherSum.capitalizedString + ")"
         self.celTemp.text = String(self.currentTemp)
         self.windText.text = String(self.windSpeed) + "mph winds"
         self.humidText.text = String(self.humidityPercent) + "% humidity"
+
+    }
+    
+    func setWeatherIcon() {
+        
+        if (self.weatherSum == "broken clouds") {
+            self.weatherIcon.image = UIImage(named: "london-01.png")
+        }
+        
     }
     
     func determineTempScore() {
@@ -113,8 +131,18 @@ class ViewController: UIViewController {
         } else {
             self.icons.image = nil
         }
+    
     }
     
+    func setClothingIcon() {
+        
+        if (self.clothesScore < 2) {
+            self.clothesIcon.image = UIImage(named: "hat.png")
+        } else {
+            self.clothesIcon.image = nil
+        }
+
+    }
     
 }
 
